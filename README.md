@@ -1,4 +1,4 @@
-![BCColor](https://github.com/boycechang/BCColor/blob/master/BCColorIcon.png)
+![BCColor](https://github.com/boycechang/BCColor/blob/master/icon.png)
 
 #BCColor
 **A lightweight but powerful color kit (Swift)**
