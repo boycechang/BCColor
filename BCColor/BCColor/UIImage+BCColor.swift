@@ -82,6 +82,7 @@ extension UIImage {
                 imageColors.addObject(color)
             }
         }
+        free(raw)
         
         // 颜色预处理，去除出现次数过少及接近黑白的颜色
         let enumerator = imageColors.objectEnumerator()
@@ -94,7 +95,6 @@ extension UIImage {
         }
         sortedColors.sortUsingComparator(sortedColorComparator)
         
-        
         // 确定背景色
         var backgroundColor: BCCountedColor
         if 0 < sortedColors.count {
@@ -104,7 +104,6 @@ extension UIImage {
         }
         result.backgroundColor = backgroundColor.color;
         
-        
         // 生成主题色，主题色与背景色需要有明暗对比，且主题色之间需要有明显可辨色差
         let isDarkBackgound = result.backgroundColor.bc_isDark
         for curContainer in sortedColors {
@@ -112,41 +111,40 @@ extension UIImage {
             if (kolor.bc_isDark && isDarkBackgound) || (!kolor.bc_isDark && !isDarkBackgound) {continue}
             
             if result.primaryColor == nil {
-                if !kolor.bc_isContrasting(result.backgroundColor) {
-                    continue
+                if kolor.bc_isContrasting(result.backgroundColor) {
+                    result.primaryColor = kolor
                 }
-                
-                result.primaryColor = kolor
             } else if result.secondaryColor == nil {
-                if !result.primaryColor.bc_isDistinct(kolor) || !kolor.bc_isContrasting(result.backgroundColor) {
-                    continue
+                if result.primaryColor.bc_isDistinct(kolor) && kolor.bc_isContrasting(result.backgroundColor) {
+                    result.secondaryColor = kolor
                 }
-                
-                result.secondaryColor = kolor
             } else if result.minorColor == nil {
-                if !result.secondaryColor.bc_isDistinct(kolor) || !result.primaryColor.bc_isDistinct(kolor) || !kolor.bc_isContrasting(result.backgroundColor) {
-                    continue
+                if result.secondaryColor.bc_isDistinct(kolor) && result.primaryColor.bc_isDistinct(kolor) && kolor.bc_isContrasting(result.backgroundColor) {
+                    result.minorColor = kolor
+                    break
                 }
-                
-                result.minorColor = kolor
-                break
             }
         }
         
         if result.primaryColor == nil {
             result.primaryColor = isDarkBackgound ? whiteColor:blackColor
         }
-        
         if result.secondaryColor == nil {
             result.secondaryColor = isDarkBackgound ? whiteColor:blackColor
         }
-        
         if result.minorColor == nil {
             result.minorColor = isDarkBackgound ? whiteColor:blackColor
         }
         
-        free(raw)
-        
         return result
+    }
+    
+    public func monochrome() -> UIImage {
+        let originalImage = CoreImage.CIImage(image: self)
+        let filter = CIFilter(name: "CIPhotoEffectMono")
+        filter!.setDefaults()
+        filter!.setValue(originalImage, forKey: kCIInputImageKey)
+        let outputImage = filter!.outputImage
+        return UIImage(CIImage: outputImage!)
     }
 }

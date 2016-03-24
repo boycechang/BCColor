@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BCColor" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="pSr-R0-XD9">
-                                <rect key="frame" x="221.5" y="253" width="157" height="48"/>
+                                <rect key="frame" x="221.5" y="150" width="157" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="157" id="jcp-xh-LBq"/>
                                     <constraint firstAttribute="height" constant="48" id="va8-bY-1pR"/>
@@ -27,7 +27,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xaiobo Zhang  All rights reserved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2jA-qz-SNY">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xiaobo Zhang  All rights reserved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2jA-qz-SNY">
                                 <rect key="frame" x="80" y="536" width="441" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="441" id="FVh-nu-GTC"/>
@@ -37,11 +37,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A lightweight but powerful color kit" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="RKV-TB-6rq">
-                                <rect key="frame" x="152" y="313" width="296" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A lightweight but powerful color kit" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="RKV-TB-6rq">
+                                <rect key="frame" x="152" y="210" width="296" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="LOV-Yc-LCw"/>
-                                    <constraint firstAttribute="width" constant="286" id="n4T-XA-Cwa"/>
+                                    <constraint firstAttribute="width" constant="296" id="n4T-XA-Cwa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,7 +50,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pSr-R0-XD9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-23" id="4VH-hU-7z6"/>
+                            <constraint firstItem="pSr-R0-XD9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-126" id="4VH-hU-7z6"/>
                             <constraint firstItem="pSr-R0-XD9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="K5B-qI-Nvk"/>
                             <constraint firstItem="2jA-qz-SNY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aX9-9O-Srl"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="2jA-qz-SNY" secondAttribute="bottom" constant="43" id="oRH-7U-1Sa"/>

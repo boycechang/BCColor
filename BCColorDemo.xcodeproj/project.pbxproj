@@ -12,6 +12,7 @@
 		E16AF7241CA032F400FE15D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E16AF7221CA032F400FE15D1 /* Main.storyboard */; };
 		E16AF7261CA032F400FE15D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E16AF7251CA032F400FE15D1 /* Assets.xcassets */; };
 		E16AF7291CA032F400FE15D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E16AF7271CA032F400FE15D1 /* LaunchScreen.storyboard */; };
+		E1B7B1A71CA38BBC0026919F /* PickColorsFromImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B7B1A61CA38BBC0026919F /* PickColorsFromImageViewController.swift */; };
 		E1E1E7B31CA0511D00B3950D /* UIColor+BCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1E7B11CA0511D00B3950D /* UIColor+BCColor.swift */; };
 		E1E1E7B41CA0511D00B3950D /* UIImage+BCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1E7B21CA0511D00B3950D /* UIImage+BCColor.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 		E16AF7251CA032F400FE15D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E16AF7281CA032F400FE15D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E16AF72A1CA032F400FE15D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1B7B1A61CA38BBC0026919F /* PickColorsFromImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickColorsFromImageViewController.swift; sourceTree = "<group>"; };
 		E1E1E7B11CA0511D00B3950D /* UIColor+BCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+BCColor.swift"; sourceTree = "<group>"; };
 		E1E1E7B21CA0511D00B3950D /* UIImage+BCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BCColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,9 +60,10 @@
 		E16AF71D1CA032F400FE15D1 /* BCColorDemo */ = {
 			isa = PBXGroup;
 			children = (
-				E1E1E7B01CA0511D00B3950D /* BCColor */,
 				E16AF71E1CA032F400FE15D1 /* AppDelegate.swift */,
 				E16AF7201CA032F400FE15D1 /* ViewController.swift */,
+				E1E1E7B01CA0511D00B3950D /* BCColor */,
+				E1B7B1A51CA38B610026919F /* DemoVCs */,
 				E16AF7221CA032F400FE15D1 /* Main.storyboard */,
 				E16AF7251CA032F400FE15D1 /* Assets.xcassets */,
 				E16AF7271CA032F400FE15D1 /* LaunchScreen.storyboard */,
@@ -68,6 +71,14 @@
 			);
 			name = BCColorDemo;
 			path = BCColor;
+			sourceTree = "<group>";
+		};
+		E1B7B1A51CA38B610026919F /* DemoVCs */ = {
+			isa = PBXGroup;
+			children = (
+				E1B7B1A61CA38BBC0026919F /* PickColorsFromImageViewController.swift */,
+			);
+			name = DemoVCs;
 			sourceTree = "<group>";
 		};
 		E1E1E7B01CA0511D00B3950D /* BCColor */ = {
@@ -150,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1B7B1A71CA38BBC0026919F /* PickColorsFromImageViewController.swift in Sources */,
 				E1E1E7B41CA0511D00B3950D /* UIImage+BCColor.swift in Sources */,
 				E1E1E7B31CA0511D00B3950D /* UIColor+BCColor.swift in Sources */,
 				E16AF7211CA032F400FE15D1 /* ViewController.swift in Sources */,
@@ -265,6 +277,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BCColor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boycechang.bccolor.BCColor;
 				PRODUCT_NAME = BCColorDemo;
@@ -276,6 +289,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BCColor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boycechang.bccolor.BCColor;
 				PRODUCT_NAME = BCColorDemo;

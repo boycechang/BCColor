@@ -1,3 +1,5 @@
+![BCColor](https://github.com/boycechang/BCColor/blob/master/BCColorIcon.gif)
+
 #BCColor
 ====================================
 

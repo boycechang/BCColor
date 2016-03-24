@@ -5,35 +5,29 @@
 //  Created by Boyce on 3/21/16.
 //  Copyright © 2016 Boyce. All rights reserved.
 //
-
-
-/* YUV与RGB相互转换的公式如下(基于NTSC standard）︰
+//
+// YUV与RGB相互转换的公式如下(基于NTSC standard）︰
 //　　Y = 0.299R + 0.587G + 0.114B
 //　　U = -0.147R - 0.289G + 0.436B
 //　　V = 0.615R - 0.515G - 0.100B
-*/
-
-
+//
 
 import UIKit
 
-
 extension UIColor {
-    
     /********** 颜色判断 **********/
-
-    // 是否是深色
+    // 是否深色
     public var bc_isDark: Bool {
         let RGB = CGColorGetComponents(self.CGColor)
         return (0.299 * RGB[0] + 0.587 * RGB[1] + 0.114 * RGB[2]) < 0.5
     }
     
-    // 是否是黑白灰色系
+    // 是否黑白灰色系
     public var bc_isGray: Bool {
         let RGB = CGColorGetComponents(self.CGColor)
         let U = -0.147 * RGB[0] - 0.289 * RGB[1] + 0.436 * RGB[2]
         let V = 0.615 * RGB[0] - 0.515 * RGB[1] - 0.100 * RGB[2]
-        return (U <= 0.015 && V <= 0.015)
+        return (fabs(U) <= 0.01 && fabs(V) <= 0.01)
     }
     
     // 是否接近黑白色
@@ -66,8 +60,22 @@ extension UIColor {
     }
     
     
-    /********** 颜色处理 **********/
+    /********** 颜色初始化 **********/
+    // HexString 初始化
+    public class func colorWithHex(hex: String) -> UIColor {
+        return UIColor.colorWithHex(hex, alpha: 1.0)
+    }
     
+    public class func colorWithHex(hex: String, alpha: CGFloat) -> UIColor {
+        let hexColor = strtoul(hex, nil, 16)
+        let red = (CGFloat)((hexColor & 0xFF0000) >> 16);
+        let green = (CGFloat)((hexColor & 0xFF00) >> 8);
+        let blue = (CGFloat)(hexColor & 0xFF);
+        return UIColor(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1.0)
+    }
+    
+    
+    /********** 颜色处理 **********/
     // 反色
     var bc_inverseColor: UIColor {
         let RGB = CGColorGetComponents(self.CGColor)
