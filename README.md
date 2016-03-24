@@ -1,10 +1,9 @@
-![BCColor](https://github.com/boycechang/BCColor/blob/master/BCColorIcon.gif)
+![BCColor](https://github.com/boycechang/BCColor/blob/master/BCColorIcon.png)
 
 #BCColor
 ====================================
 
-
-## A lightweight but powerful color kit (in Swift)
+## A lightweight but powerful color kit (Swift)
 
 ### Version 0.0.1
 
