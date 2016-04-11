@@ -21,7 +21,8 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.setSelected(false, animated: true)
     }
 
 }

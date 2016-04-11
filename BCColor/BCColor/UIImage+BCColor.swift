@@ -38,7 +38,7 @@ extension UIImage {
         var result = BCImageColors()
         
         let ratio = self.size.width/self.size.height
-        let r_width: CGFloat = 80
+        let r_width: CGFloat = 100
         let r_height: CGFloat = r_width/ratio
         let cgImage = self.resize(CGSizeMake(r_width, r_height)).CGImage
         
@@ -73,9 +73,9 @@ extension UIImage {
             for y in 0..<height {
                 let pixel = ((width * y) + x) * bytesPerPixel
                 let color = UIColor(
-                    red: round(CGFloat(data[pixel+1]) / 255 * 120) / 120,
-                    green: round(CGFloat(data[pixel+2]) / 255 * 120) / 120,
-                    blue: round(CGFloat(data[pixel+3]) / 255 * 120) / 120,
+                    red: round(CGFloat(data[pixel + 1]) / 255 * 120) / 120,
+                    green: round(CGFloat(data[pixel + 2]) / 255 * 120) / 120,
+                    blue: round(CGFloat(data[pixel + 3]) / 255 * 120) / 120,
                     alpha: 1
                 )
                 
@@ -84,7 +84,7 @@ extension UIImage {
         }
         free(raw)
         
-        // 颜色预处理，去除出现次数过少及接近黑白的颜色
+        // preprocess and filter colors that appear seldomly or close to black or white
         let enumerator = imageColors.objectEnumerator()
         let sortedColors = NSMutableArray(capacity: imageColors.count)
         while let kolor = enumerator.nextObject() as? UIColor {
@@ -95,7 +95,7 @@ extension UIImage {
         }
         sortedColors.sortUsingComparator(sortedColorComparator)
         
-        // 确定背景色
+        // get the background colour
         var backgroundColor: BCCountedColor
         if 0 < sortedColors.count {
             backgroundColor = sortedColors.objectAtIndex(0) as! BCCountedColor
@@ -104,7 +104,7 @@ extension UIImage {
         }
         result.backgroundColor = backgroundColor.color;
         
-        // 生成主题色，主题色与背景色需要有明暗对比，且主题色之间需要有明显可辨色差
+        // create theme colors, contrast theme color with background color in lightness, and select cognizable chromatic aberration among theme colors
         let isDarkBackgound = result.backgroundColor.bc_isDark
         for curContainer in sortedColors {
             let kolor = (curContainer as! BCCountedColor).color
