@@ -100,5 +100,23 @@ extension UIColor {
         let RGB = CGColorGetComponents(self.CGColor)
         return UIColor(red: 1 - RGB[0], green: 1 - RGB[1], blue: 1 - RGB[2], alpha: RGB[3])
     }
+    
+    func bc_lightenByPercentage(percentage: CGFloat) -> UIColor {
+        var h : CGFloat = 0.0
+        var s : CGFloat = 0.0
+        var b : CGFloat = 0.0
+        var a : CGFloat = 0.0
+        self.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        
+        b = max(min(b + percentage, 1.0), 0.0)
+        
+        return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
+    }
+    
+    func bc_darkenByPercentage(percentage: CGFloat) -> UIColor {
+        return self.bc_lightenByPercentage(-percentage)
+    }
+    
+    
 }
 
