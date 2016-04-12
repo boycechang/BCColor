@@ -60,18 +60,38 @@ extension UIColor {
     
     /********** Hex Color **********/
     
-    public class func colorWithHex(hex: String) -> UIColor {
+    public class func colorWithHex(hex: String) -> UIColor? {
         return UIColor.colorWithHex(hex, alpha: 1.0)
     }
     
-    public class func colorWithHex(hex: String, alpha: CGFloat) -> UIColor {
-        let hexColor = strtoul(hex, nil, 16)
+    public class func colorWithHex(hex: String, alpha: CGFloat) -> UIColor? {
+        if (hex.isEmpty) {
+            return nil;
+        }
+        
+        var hexValue = hex
+        
+        if hexValue[hexValue.startIndex] == "#" {
+            hexValue.removeAtIndex(hex.startIndex)
+        }
+        
+        if hexValue.characters.count != 6 && hexValue.characters.count  != 3 {
+            return nil;
+        }
+        
+        if hexValue.characters.count == 3 {
+            hexValue.insert(hexValue[hexValue.startIndex], atIndex: hexValue.startIndex.advancedBy(0))
+            hexValue.insert(hexValue[hexValue.startIndex.advancedBy(2)], atIndex: hexValue.startIndex.advancedBy(2))
+            hexValue.insert(hexValue[hexValue.startIndex.advancedBy(4)], atIndex: hexValue.startIndex.advancedBy(4))
+        }
+
+        let hexColor = strtoul(hexValue, nil, 16)
         let red = (CGFloat)((hexColor & 0xFF0000) >> 16);
         let green = (CGFloat)((hexColor & 0xFF00) >> 8);
         let blue = (CGFloat)(hexColor & 0xFF);
         return UIColor(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1.0)
     }
-    
+
     
     
     /********** Process **********/
