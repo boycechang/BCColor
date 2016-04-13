@@ -3,11 +3,31 @@
 #BCColor
 **A lightweight but powerful color kit (Swift)**
 
-## Introduction
+
+
+## Features
+
+- Pick Colors From Image
+
+- Generate Monochrome Image
+
+- Support Hex Color Style
+
+- Lighten / Darken Any Color
+
+- Generate Two Different Styles of Gradient Color
+
+  ​
+
+
+
+## Installation
 
 #### Requirements
 
-* ARC only; iOS 7.0+
+* ARC only; iOS 8.0+
+
+  ​
 
 #### Get it as: 
 ##### 1) source files
@@ -17,10 +37,35 @@
 
 ##### 2) via Cocoa pods
 
-Todo
+BCColor is available on [CocoaPods](http://cocoapods.org). Just add the following to your project Podfile:
+
+```ruby
+pod 'BCColor'
+```
 
 If you want to read more about CocoaPods, have a look at [this short tutorial](http://www.raywenderlich.com/12139/introduction-to-cocoapods).
- 
+
+
+
+## Basic Usage
+
+```swift
+// Pick Colors From Image
+let colors = image?.bc_getColors()
+
+// Generate Momochrome Image
+let monochromeImage = image?.bc_monochrome()
+
+// Hex Color
+UIColor.bc_colorWithHex("#5d13e2", alpha: 1)
+
+// Gradient Color
+UIColor.bc_gradientColor(CGPointMake(0.0, 0.0), endPoint: CGPointMake(1.0, 1.0), frame:frame, colors: [UIColor.redColor(), UIColor.blueColor()])
+
+UIColor.bc_radialGradientColor(frame, colors: [UIColor.blueColor(), UIColor.greenColor()])
+```
+
+
 
 ##Misc
 
@@ -28,8 +73,8 @@ Author: [Boyce Chang](http://www.boycechang.com)
 
 If you like BCColor and use it, could you please:
 
- * star this repo 
- * send me some feedback. Thanks!
+* star this repo 
+* send me some feedback. Thanks!
 
 
 #### License
