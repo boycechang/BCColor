@@ -19,6 +19,16 @@
 
   ​
 
+  ![BCColor](https://github.com/boycechang/BCColor/blob/master/demo1.jpeg)
+
+  ![BCColor](https://github.com/boycechang/BCColor/blob/master/demo2.jpeg)
+
+  ![BCColor](https://github.com/boycechang/BCColor/blob/master/demo3.jpeg)
+
+  ​
+
+  ​
+
 
 
 ## Installation
