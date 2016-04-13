@@ -66,7 +66,7 @@ extension UIColor {
     
     public class func colorWithHex(hex: String, alpha: CGFloat) -> UIColor? {
         if (hex.isEmpty) {
-            return nil;
+            return nil
         }
         
         var hexValue = hex
@@ -76,7 +76,7 @@ extension UIColor {
         }
         
         if hexValue.characters.count != 6 && hexValue.characters.count  != 3 {
-            return nil;
+            return nil
         }
         
         if hexValue.characters.count == 3 {
@@ -86,9 +86,9 @@ extension UIColor {
         }
 
         let hexColor = strtoul(hexValue, nil, 16)
-        let red = (CGFloat)((hexColor & 0xFF0000) >> 16);
-        let green = (CGFloat)((hexColor & 0xFF00) >> 8);
-        let blue = (CGFloat)(hexColor & 0xFF);
+        let red = (CGFloat)((hexColor & 0xFF0000) >> 16)
+        let green = (CGFloat)((hexColor & 0xFF00) >> 8)
+        let blue = (CGFloat)(hexColor & 0xFF)
         return UIColor(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1.0)
     }
 
@@ -118,5 +118,48 @@ extension UIColor {
     }
     
     
+    /********** Gradient **********/
+    /* startPoint / endPoint : (0, 0) is the left top corner, (1, 1) is the right botttom corner
+     */
+    public class func gradientColor(startPoint: CGPoint, endPoint: CGPoint, frame: CGRect, colors: Array<UIColor>) -> UIColor? {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = frame
+        
+        var cgColors = [AnyObject]()
+        for color in colors {
+            cgColors.append(color.CGColor)
+        }
+        gradientLayer.colors = cgColors
+        gradientLayer.startPoint = startPoint
+        gradientLayer.endPoint = endPoint
+        
+        UIGraphicsBeginImageContextWithOptions(gradientLayer.bounds.size, false, UIScreen.mainScreen().scale)
+        gradientLayer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let gradientImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return UIColor(patternImage: gradientImage)
+    }
+    
+    public class func radialGradientColor(frame: CGRect, colors: Array<UIColor>) -> UIColor? {
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.mainScreen().scale)
+        
+        var cgColors = [AnyObject]()
+        for color in colors {
+            cgColors.append(color.CGColor)
+        }
+        let colorspace = CGColorSpaceCreateDeviceRGB()
+        let arrayRef = cgColors as CFArrayRef
+        let gradient = CGGradientCreateWithColors(colorspace, arrayRef, nil)
+        let centrePoint = CGPointMake(0.5 * frame.size.width, 0.5 * frame.size.height)
+        let radius = max(frame.size.width, frame.size.height) * 0.5
+        
+        CGContextDrawRadialGradient (UIGraphicsGetCurrentContext(), gradient, centrePoint,
+                                     0, centrePoint, radius,
+                                     CGGradientDrawingOptions.DrawsAfterEndLocation)
+        let gradientImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        return UIColor(patternImage: gradientImage)
+    }
 }
 

@@ -102,7 +102,7 @@ extension UIImage {
         } else {
             backgroundColor = BCCountedColor(color: blackColor, count: 1)
         }
-        result.backgroundColor = backgroundColor.color;
+        result.backgroundColor = backgroundColor.color
         
         // create theme colors, contrast theme color with background color in lightness, and select cognizable chromatic aberration among theme colors
         let isDarkBackgound = result.backgroundColor.bc_isDark

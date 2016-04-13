@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E11BDB3D1CBE249B0078EE89 /* GradientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BDB3C1CBE249B0078EE89 /* GradientViewController.swift */; };
 		E16AF71F1CA032F400FE15D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AF71E1CA032F400FE15D1 /* AppDelegate.swift */; };
 		E16AF7211CA032F400FE15D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AF7201CA032F400FE15D1 /* ViewController.swift */; };
 		E16AF7241CA032F400FE15D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E16AF7221CA032F400FE15D1 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E11BDB3C1CBE249B0078EE89 /* GradientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientViewController.swift; sourceTree = "<group>"; };
 		E16AF71B1CA032F400FE15D1 /* BCColorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCColorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16AF71E1CA032F400FE15D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E16AF7201CA032F400FE15D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				E1B7B1A61CA38BBC0026919F /* PickColorsFromImageViewController.swift */,
 				E18BFED31CBD3FD400FAB858 /* HexColorViewController.swift */,
 				E194B8BB1CBD554E00C6FB4D /* LightenViewController.swift */,
+				E11BDB3C1CBE249B0078EE89 /* GradientViewController.swift */,
 			);
 			name = DemoVCs;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				E1B7B1A71CA38BBC0026919F /* PickColorsFromImageViewController.swift in Sources */,
 				E1E1E7B41CA0511D00B3950D /* UIImage+BCColor.swift in Sources */,
 				E1E1E7B31CA0511D00B3950D /* UIColor+BCColor.swift in Sources */,
+				E11BDB3D1CBE249B0078EE89 /* GradientViewController.swift in Sources */,
 				E194B8BC1CBD554E00C6FB4D /* LightenViewController.swift in Sources */,
 				E16AF7211CA032F400FE15D1 /* ViewController.swift in Sources */,
 				E16AF71F1CA032F400FE15D1 /* AppDelegate.swift in Sources */,
