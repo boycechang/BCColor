@@ -20,16 +20,16 @@ class GradientViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        label_0.textColor = UIColor.gradientColor(CGPointMake(0.0, 0.0), endPoint: CGPointMake(1.0, 1.0), frame: label_0.frame, colors: [UIColor.redColor(), UIColor.blueColor()])
+        label_0.textColor = UIColor.bc_gradientColor(CGPointMake(0.0, 0.0), endPoint: CGPointMake(1.0, 1.0), frame: label_0.frame, colors: [UIColor.redColor(), UIColor.blueColor()])
         
-        label_1.backgroundColor = UIColor.gradientColor(CGPointMake(0.0, 0.5), endPoint: CGPointMake(1.0, 0.5), frame: label_1.frame, colors: [UIColor.blueColor(), UIColor.yellowColor()])
+        label_1.backgroundColor = UIColor.bc_gradientColor(CGPointMake(0.0, 0.5), endPoint: CGPointMake(1.0, 0.5), frame: label_1.frame, colors: [UIColor.blueColor(), UIColor.yellowColor()])
         
         
-        view_0.backgroundColor = UIColor.gradientColor(CGPointMake(0.5, 0.0), endPoint: CGPointMake(0.5, 1.0), frame: view_0.frame, colors: [UIColor.redColor(), UIColor.blueColor()])
+        view_0.backgroundColor = UIColor.bc_gradientColor(CGPointMake(0.5, 0.0), endPoint: CGPointMake(0.5, 1.0), frame: view_0.frame, colors: [UIColor.redColor(), UIColor.blueColor()])
         
-        view_1.backgroundColor = UIColor.gradientColor(CGPointMake(0, 0.5), endPoint: CGPointMake(1, 0.5), frame: view_1.frame, colors: [UIColor.blueColor(), UIColor.yellowColor(), UIColor.redColor(),UIColor.greenColor()])
+        view_1.backgroundColor = UIColor.bc_gradientColor(CGPointMake(0, 0.5), endPoint: CGPointMake(1, 0.5), frame: view_1.frame, colors: [UIColor.blueColor(), UIColor.yellowColor(), UIColor.redColor(),UIColor.greenColor()])
         
-        view_2.backgroundColor = UIColor.radialGradientColor(view_2.frame, colors: [UIColor.blueColor(), UIColor.yellowColor(), UIColor.redColor(),UIColor.greenColor()])
+        view_2.backgroundColor = UIColor.bc_radialGradientColor(view_2.frame, colors: [UIColor.blueColor(), UIColor.yellowColor(), UIColor.redColor(),UIColor.greenColor()])
         
         // Do any additional setup after loading the view.
     }

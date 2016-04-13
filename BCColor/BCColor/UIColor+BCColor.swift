@@ -60,11 +60,11 @@ extension UIColor {
     
     /********** Hex Color **********/
     
-    public class func colorWithHex(hex: String) -> UIColor? {
-        return UIColor.colorWithHex(hex, alpha: 1.0)
+    public class func bc_colorWithHex(hex: String) -> UIColor? {
+        return UIColor.bc_colorWithHex(hex, alpha: 1.0)
     }
     
-    public class func colorWithHex(hex: String, alpha: CGFloat) -> UIColor? {
+    public class func bc_colorWithHex(hex: String, alpha: CGFloat) -> UIColor? {
         if (hex.isEmpty) {
             return nil
         }
@@ -121,7 +121,7 @@ extension UIColor {
     /********** Gradient **********/
     /* startPoint / endPoint : (0, 0) is the left top corner, (1, 1) is the right botttom corner
      */
-    public class func gradientColor(startPoint: CGPoint, endPoint: CGPoint, frame: CGRect, colors: Array<UIColor>) -> UIColor? {
+    public class func bc_gradientColor(startPoint: CGPoint, endPoint: CGPoint, frame: CGRect, colors: Array<UIColor>) -> UIColor? {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = frame
         
@@ -141,7 +141,7 @@ extension UIColor {
         return UIColor(patternImage: gradientImage)
     }
     
-    public class func radialGradientColor(frame: CGRect, colors: Array<UIColor>) -> UIColor? {
+    public class func bc_radialGradientColor(frame: CGRect, colors: Array<UIColor>) -> UIColor? {
         UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.mainScreen().scale)
         
         var cgColors = [AnyObject]()

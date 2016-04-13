@@ -15,6 +15,7 @@
 		E16AF7291CA032F400FE15D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E16AF7271CA032F400FE15D1 /* LaunchScreen.storyboard */; };
 		E18BFED41CBD3FD400FAB858 /* HexColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18BFED31CBD3FD400FAB858 /* HexColorViewController.swift */; };
 		E194B8BC1CBD554E00C6FB4D /* LightenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E194B8BB1CBD554E00C6FB4D /* LightenViewController.swift */; };
+		E1B24DCC1CBE430700687D82 /* MonochromeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B24DCB1CBE430700687D82 /* MonochromeViewController.swift */; };
 		E1B7B1A71CA38BBC0026919F /* PickColorsFromImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B7B1A61CA38BBC0026919F /* PickColorsFromImageViewController.swift */; };
 		E1E1E7B31CA0511D00B3950D /* UIColor+BCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1E7B11CA0511D00B3950D /* UIColor+BCColor.swift */; };
 		E1E1E7B41CA0511D00B3950D /* UIImage+BCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1E7B21CA0511D00B3950D /* UIImage+BCColor.swift */; };
@@ -31,6 +32,7 @@
 		E16AF72A1CA032F400FE15D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18BFED31CBD3FD400FAB858 /* HexColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColorViewController.swift; sourceTree = "<group>"; };
 		E194B8BB1CBD554E00C6FB4D /* LightenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightenViewController.swift; sourceTree = "<group>"; };
+		E1B24DCB1CBE430700687D82 /* MonochromeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonochromeViewController.swift; sourceTree = "<group>"; };
 		E1B7B1A61CA38BBC0026919F /* PickColorsFromImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickColorsFromImageViewController.swift; sourceTree = "<group>"; };
 		E1E1E7B11CA0511D00B3950D /* UIColor+BCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+BCColor.swift"; sourceTree = "<group>"; };
 		E1E1E7B21CA0511D00B3950D /* UIImage+BCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BCColor.swift"; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				E1B7B1A61CA38BBC0026919F /* PickColorsFromImageViewController.swift */,
+				E1B24DCB1CBE430700687D82 /* MonochromeViewController.swift */,
 				E18BFED31CBD3FD400FAB858 /* HexColorViewController.swift */,
 				E194B8BB1CBD554E00C6FB4D /* LightenViewController.swift */,
 				E11BDB3C1CBE249B0078EE89 /* GradientViewController.swift */,
@@ -177,6 +180,7 @@
 				E11BDB3D1CBE249B0078EE89 /* GradientViewController.swift in Sources */,
 				E194B8BC1CBD554E00C6FB4D /* LightenViewController.swift in Sources */,
 				E16AF7211CA032F400FE15D1 /* ViewController.swift in Sources */,
+				E1B24DCC1CBE430700687D82 /* MonochromeViewController.swift in Sources */,
 				E16AF71F1CA032F400FE15D1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,7 +15,7 @@ public struct BCImageColors {
     public var minorColor: UIColor!
 }
 
-class BCCountedColor {
+private class BCCountedColor {
     let color: UIColor
     let count: Int
     
@@ -26,7 +26,7 @@ class BCCountedColor {
 }
 
 extension UIImage {
-    public func resize(newSize: CGSize) -> UIImage {
+    private func resize(newSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
         self.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
         let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -34,7 +34,7 @@ extension UIImage {
         return result
     }
     
-    public func getColors() -> BCImageColors {
+    public func bc_getColors() -> BCImageColors {
         var result = BCImageColors()
         
         let ratio = self.size.width/self.size.height
@@ -139,7 +139,7 @@ extension UIImage {
         return result
     }
     
-    public func monochrome() -> UIImage {
+    public func bc_monochrome() -> UIImage {
         let originalImage = CoreImage.CIImage(image: self)
         let filter = CIFilter(name: "CIPhotoEffectMono")
         filter!.setDefaults()
