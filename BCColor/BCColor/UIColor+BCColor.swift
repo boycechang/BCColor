@@ -52,7 +52,8 @@ extension UIColor {
     /**
      Checks if the color `isDisctinct` from another.
      - Parameter compareColor: The `UIColor` that `self` will be compared with.
-     - Returns: A boolean value inidcating if the color is different than the other. `true = distinct` | `false = not distinct`.*/
+     - Returns: A boolean value inidcating if the color is different than the other. `true = distinct` | `false = not distinct`.
+     */
     public func isDistinct(compareColor: UIColor) -> Bool {
         // get the rgba values for our self
         let bg = CGColorGetComponents(self.CGColor)
@@ -72,56 +73,85 @@ extension UIColor {
         return false
     }
     
-    
+    /**
+     Checks if the color `isContrasting` with another color.
+     - Parameter compareColor: The `UIColor` that is being compared to `self`.
+     - Returns: A boolean value indicating the if the two colors contrast.
+     */
     public func isContrasting(compareColor: UIColor) -> Bool {
+        // get the rgba values for self
         let bg = CGColorGetComponents(self.CGColor)
+        
+        // get the rgba values for the color we are comparing with
         let fg = CGColorGetComponents(compareColor.CGColor)
         
-        let bgLum = 0.299 * bg[0] + 0.587 * bg[1] + 0.114 * bg[2]
-        let fgLum = 0.299 * fg[0] + 0.587 * fg[1] + 0.114 * fg[2]
-        let contrast = (bgLum > fgLum) ? (bgLum + 0.05)/(fgLum + 0.05):(fgLum + 0.05)/(bgLum + 0.05)
+        // compute the brightness of both colors
+        let bgLum = 0.299*bg[0] + 0.587*bg[1] + 0.114*bg[2]
+        let fgLum = 0.299*fg[0] + 0.587*fg[1] + 0.114*fg[2]
+        
+        // calculate the contrast using the values we just computed
+        let contrast = (bgLum > fgLum) ? (bgLum+0.05)/(fgLum+0.05) : (fgLum+0.05)/(bgLum+0.05)
+        
+        // check if they contrast
         return 1.4 < contrast
     }
     
+    // MARK: - Hex Color
     
-    
-    /********** Hex Color **********/
-    
+    /**
+     Takes the _`hex`_ string and generates the `UIColor` from it.
+     - Parameter hex: The `String` of a _`hex`_ color code.
+     - Returns: A `UIColor` (if possible) that matches the _`hex`_.
+     */
     public class func colorWithHex(hex: String) -> UIColor? {
         return UIColor.colorWithHex(hex, alpha: 1.0)
     }
     
+    /**
+     Takes the _`hex`_ string and generates the `UIColor` from it.
+     - Parameter hex: The `String` of a _`hex`_ color code.
+     - Parameter alpha: The `alpha` value for the _`hex`_ color code.
+     - Returns: A `UIColor` (if possible) that matches the _`hex`_ and has the _`alpha`_ matching the input.
+     */
     public class func colorWithHex(hex: String, alpha: CGFloat) -> UIColor? {
+        // check if the string is empty
         if (hex.isEmpty) {
             return nil
         }
         
+        // get a variable value for the hex string
         var hexValue = hex
         
+        // get rid of the # (hashtag) if there is one
         if hexValue[hexValue.startIndex] == "#" {
             hexValue.removeAtIndex(hex.startIndex)
         }
         
-        if hexValue.characters.count != 6 && hexValue.characters.count  != 3 {
+        // make sure the hexValue is valid in length
+        if hexValue.characters.count != 6 && hexValue.characters.count != 3 {
             return nil
         }
         
+        // if there are not enough character in hexValue we will just add them
         if hexValue.characters.count == 3 {
             hexValue.insert(hexValue[hexValue.startIndex], atIndex: hexValue.startIndex.advancedBy(0))
             hexValue.insert(hexValue[hexValue.startIndex.advancedBy(2)], atIndex: hexValue.startIndex.advancedBy(2))
             hexValue.insert(hexValue[hexValue.startIndex.advancedBy(4)], atIndex: hexValue.startIndex.advancedBy(4))
         }
 
+        // get the hex color as a UInt value
         let hexColor = strtoul(hexValue, nil, 16)
-        let red = (CGFloat)((hexColor & 0xFF0000) >> 16)
-        let green = (CGFloat)((hexColor & 0xFF00) >> 8)
-        let blue = (CGFloat)(hexColor & 0xFF)
-        return UIColor(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1.0)
+        
+        // calculate the rgb values
+        let red = CGFloat((hexColor & 0xFF0000) >> 16)
+        let green = CGFloat((hexColor & 0xFF00) >> 8)
+        let blue = CGFloat(hexColor & 0xFF)
+        
+        // return a UIColor with the values we got from the hex string and the alpha inputed
+        return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: alpha)
     }
-
     
-    
-    /********** Process **********/
+    // MARK: Color Processing
     
     var bc_inverseColor: UIColor {
         let RGB = CGColorGetComponents(self.CGColor)
