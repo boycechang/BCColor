@@ -153,32 +153,50 @@ extension UIColor {
     
     // MARK: Color Processing
     
-    var bc_inverseColor: UIColor {
+    /// `UIColor` value that represents the inverse of `self`.
+    var inverseColor: UIColor {
+        // get the rgba values of self
         let RGB = CGColorGetComponents(self.CGColor)
+        
+        // calculate the inverse color
         return UIColor(red: 1 - RGB[0], green: 1 - RGB[1], blue: 1 - RGB[2], alpha: RGB[3])
     }
     
-    func bc_lightenByPercentage(percentage: CGFloat) -> UIColor {
+    /**
+     Lightens the color by a given `percentage`.
+     - Parameter percentage: The `percentage` to lighten by. Values between 0–1.0 are accepted.
+     - Returns: A new `UIColor` lightened by a given `percentage`.
+     */
+    public func lightenByPercentage(percentage: CGFloat) -> UIColor {
+        // get the hue, sat, brightness, and alpha values
         var h : CGFloat = 0.0
         var s : CGFloat = 0.0
         var b : CGFloat = 0.0
         var a : CGFloat = 0.0
         self.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
         
+        // increase the brightness value, max makes sure brightness does not go below 0 and min ensures that the brightness value does not go above 1.0
         b = max(min(b + percentage, 1.0), 0.0)
         
+        // return a new UIColor with the new values
         return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
     }
     
-    func bc_darkenByPercentage(percentage: CGFloat) -> UIColor {
-        return self.bc_lightenByPercentage(-percentage)
+    /**
+     Darkens the color by a given `percentage`.
+     - Parameter percentage: The `percentage` to darken by. Values between 0–1.0 are accepted.
+     - Returns: A new `UIColor` darkened by a given `percentage`.
+     */
+    public func darkenByPercentage(percentage: CGFloat) -> UIColor {
+        return self.lightenByPercentage(-percentage)
     }
     
     
-    /********** Gradient **********/
+    // MARK: Gradient Methods
+    
     /* startPoint / endPoint : (0, 0) is the left top corner, (1, 1) is the right botttom corner
      */
-    public class func bc_gradientColor(startPoint: CGPoint, endPoint: CGPoint, frame: CGRect, colors: Array<UIColor>) -> UIColor? {
+    public class func gradientColor(startPoint: CGPoint, endPoint: CGPoint, frame: CGRect, colors: Array<UIColor>) -> UIColor? {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = frame
         
