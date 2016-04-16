@@ -196,44 +196,87 @@ extension UIColor {
     
     /* startPoint / endPoint : (0, 0) is the left top corner, (1, 1) is the right botttom corner
      */
-    public class func gradientColor(startPoint: CGPoint, endPoint: CGPoint, frame: CGRect, colors: Array<UIColor>) -> UIColor? {
+    
+    /**
+     Creates a gradient color.
+     - Parameter startPoint: The `CGPoint` to start the gradient at. _Note: (0,0) is the top left corner._
+     - Parameter endPoint: The `CGPoint` to start the gradient at. _Note: (1,1) is the bottom right corner._
+     - Parameter frame: The frame of the gradient.
+     - Parameter colors: An array of `UIColor`'s that will be included in the gradient.
+     - Returns: A new gradient `UIColor`.
+     */
+    public class func gradientColor(startPoint: CGPoint, endPoint: CGPoint, frame: CGRect, colors: [UIColor]) -> UIColor? {
+        // init a CAGradientLayer and set its frame
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = frame
         
-        var cgColors = [AnyObject]()
-        for color in colors {
-            cgColors.append(color.CGColor)
-        }
+        // turn the array of UIColor's into an array of CGColor's
+        let cgColors = colors.map({$0.CGColor})
+        
+        // set the colors of the gradient
         gradientLayer.colors = cgColors
+        
+        // set the start and end points of the gradient
         gradientLayer.startPoint = startPoint
         gradientLayer.endPoint = endPoint
         
+        // start an image context
         UIGraphicsBeginImageContextWithOptions(gradientLayer.bounds.size, false, UIScreen.mainScreen().scale)
+        
+        // draw the gradient layer in the context
         gradientLayer.renderInContext(UIGraphicsGetCurrentContext()!)
+        
+        // get the image of the gradient from the current image context
         let gradientImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        // end the context
         UIGraphicsEndImageContext()
         
+        // return a new UIColor using the gradient image we made
         return UIColor(patternImage: gradientImage)
     }
     
-    public class func bc_radialGradientColor(frame: CGRect, colors: Array<UIColor>) -> UIColor? {
+    /**
+     Creates a radial gradient color.
+     - Parameter frame: The frame of the gradient.
+     - Parameter colors: An array of `UIColor`'s that will be included in the gradient.
+     - Returns: A new radially gradient `UIColor`.
+     */
+    public class func radialGradientColor(frame: CGRect, colors: [UIColor]) -> UIColor? {
+        // start the image context
         UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.mainScreen().scale)
         
-        var cgColors = [AnyObject]()
-        for color in colors {
-            cgColors.append(color.CGColor)
-        }
-        let colorspace = CGColorSpaceCreateDeviceRGB()
-        let arrayRef = cgColors as CFArrayRef
-        let gradient = CGGradientCreateWithColors(colorspace, arrayRef, nil)
-        let centrePoint = CGPointMake(0.5 * frame.size.width, 0.5 * frame.size.height)
-        let radius = max(frame.size.width, frame.size.height) * 0.5
+        // get an array of CGColor's from the UIColor's
+        let cgColors = colors.map({$0.CGColor})
         
-        CGContextDrawRadialGradient (UIGraphicsGetCurrentContext(), gradient, centrePoint,
-                                     0, centrePoint, radius,
-                                     CGGradientDrawingOptions.DrawsAfterEndLocation)
+        // init a color space
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        // get a CFArrayRef from our array of CGColor's
+        let arrayRef = cgColors as CFArrayRef
+        
+        // init the gradient
+        let gradient = CGGradientCreateWithColors(colorSpace, arrayRef, nil)
+        
+        // make the center point in the center
+        let centrePoint = CGPointMake(frame.size.width/2, frame.size.height/2)
+        
+        // calculate the radius from the frame
+        let radius = max(frame.size.width, frame.size.height)/2
+        
+        // draw the radial gradient
+        CGContextDrawRadialGradient(UIGraphicsGetCurrentContext(),
+                                     gradient,
+                                     centrePoint,
+                                     0,
+                                     centrePoint,
+                                     radius,
+                                     .DrawsAfterEndLocation)
+        
+        // get a UIImage from the current context
         let gradientImage = UIGraphicsGetImageFromCurrentImageContext()
         
+        // return a new UIColor from the radial gradient we just made
         return UIColor(patternImage: gradientImage)
     }
 }
