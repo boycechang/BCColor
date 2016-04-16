@@ -16,37 +16,64 @@ import UIKit
 
 extension UIColor {
     
-    /********** Evaluation **********/
+    // MARK: - Color Evalutation
     
-    public var bc_isDark: Bool {
+    /// Boolean value indicating if the color `isDark`.
+    public var isDark: Bool {
+        // get the rgba values of the color
         let RGB = CGColorGetComponents(self.CGColor)
-        return (0.299 * RGB[0] + 0.587 * RGB[1] + 0.114 * RGB[2]) < 0.5
+        
+        // this algorithm uses the the constants (0.299,0.587,0.114) to determine the brightness of the color and if it is less than half (0.5) than it is considered dark
+        return (0.299*RGB[0] + 0.587*RGB[1] + 0.114*RGB[2]) < 0.5
     }
     
-    public var bc_isGray: Bool {
+    /// Boolean value indicating if the color `isGray`.
+    public var isGray: Bool {
+        // get the rgba values of the color
         let RGB = CGColorGetComponents(self.CGColor)
-        let U = -0.147 * RGB[0] - 0.289 * RGB[1] + 0.436 * RGB[2]
-        let V = 0.615 * RGB[0] - 0.515 * RGB[1] - 0.100 * RGB[2]
-        return (fabs(U) <= 0.002 && fabs(V) <= 0.002)
+        
+        // compute color values that help us determine if the color is gray
+        let U = -0.147*RGB[0] - 0.289*RGB[1] + 0.436*RGB[2]
+        let V = 0.615*RGB[0] - 0.515*RGB[1] - 0.100*RGB[2]
+        
+        // check if the U and V values we computed are equivalent to that of gray
+        return (abs(U) <= 0.002 && abs(V) <= 0.002)
     }
     
-    public var bc_isBlackOrWhite: Bool {
+    /// Boolean value indicating if the color `isBlackOrWhite`.
+    public var isBlackOrWhite: Bool {
+        // get the rgba values of the color
         let RGB = CGColorGetComponents(self.CGColor)
+        
+        // check if the color values match that of white or black
         return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91) || (RGB[0] < 0.09 && RGB[1] < 0.09 && RGB[2] < 0.09)
     }
     
-    public func bc_isDistinct(compareColor: UIColor) -> Bool {
+    /**
+     Checks if the color `isDisctinct` from another.
+     - Parameter compareColor: The `UIColor` that `self` will be compared with.
+     - Returns: A boolean value inidcating if the color is different than the other. `true = distinct` | `false = not distinct`.*/
+    public func isDistinct(compareColor: UIColor) -> Bool {
+        // get the rgba values for our self
         let bg = CGColorGetComponents(self.CGColor)
+        
+        // get the rgba values for the color we are comparing to
         let fg = CGColorGetComponents(compareColor.CGColor)
+        
+        // set a constant threshold
         let threshold: CGFloat = 0.25
         
-        if fabs(bg[0] - fg[0]) > threshold || fabs(bg[1] - fg[1]) > threshold || fabs(bg[2] - fg[2]) > threshold {
-            return !(self.bc_isGray && compareColor.bc_isGray)
+        // check if they are distinct
+        if (abs(bg[0]-fg[0]) > threshold) || (abs(bg[1]-fg[1]) > threshold) || (abs(bg[2]-fg[2]) > threshold) {
+            return !(isGray && compareColor.isGray)
         }
+        
+        // return that they are not distinct
         return false
     }
     
-    public func bc_isContrasting(compareColor: UIColor) -> Bool {
+    
+    public func isContrasting(compareColor: UIColor) -> Bool {
         let bg = CGColorGetComponents(self.CGColor)
         let fg = CGColorGetComponents(compareColor.CGColor)
         
@@ -60,11 +87,11 @@ extension UIColor {
     
     /********** Hex Color **********/
     
-    public class func bc_colorWithHex(hex: String) -> UIColor? {
-        return UIColor.bc_colorWithHex(hex, alpha: 1.0)
+    public class func colorWithHex(hex: String) -> UIColor? {
+        return UIColor.colorWithHex(hex, alpha: 1.0)
     }
     
-    public class func bc_colorWithHex(hex: String, alpha: CGFloat) -> UIColor? {
+    public class func colorWithHex(hex: String, alpha: CGFloat) -> UIColor? {
         if (hex.isEmpty) {
             return nil
         }

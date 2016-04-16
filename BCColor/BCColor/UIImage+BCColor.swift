@@ -105,7 +105,7 @@ extension UIImage {
         result.backgroundColor = backgroundColor.color
         
         // create theme colors, contrast theme color with background color in lightness, and select cognizable chromatic aberration among theme colors
-        let isDarkBackgound = result.backgroundColor.bc_isDark
+        let isDarkBackgound = result.backgroundColor.isDark
         for curContainer in sortedColors {
             let kolor = (curContainer as! BCCountedColor).color
             if (kolor.bc_isDark && isDarkBackgound) || (!kolor.bc_isDark && !isDarkBackgound) {continue}
@@ -115,11 +115,11 @@ extension UIImage {
                     result.primaryColor = kolor
                 }
             } else if result.secondaryColor == nil {
-                if result.primaryColor.bc_isDistinct(kolor) && kolor.bc_isContrasting(result.backgroundColor) {
+                if result.primaryColor.isDistinct(kolor) && kolor.bc_isContrasting(result.backgroundColor) {
                     result.secondaryColor = kolor
                 }
             } else if result.minorColor == nil {
-                if result.secondaryColor.bc_isDistinct(kolor) && result.primaryColor.bc_isDistinct(kolor) && kolor.bc_isContrasting(result.backgroundColor) {
+                if result.secondaryColor.isDistinct(kolor) && result.primaryColor.bc_isDistinct(kolor) && kolor.bc_isContrasting(result.backgroundColor) {
                     result.minorColor = kolor
                     break
                 }
