@@ -61,18 +61,18 @@ If you want to read more about CocoaPods, have a look at [this short tutorial](h
 
 ```swift
 // Pick Colors From Image
-let colors = image?.bc_getColors()
+let colors = image?.getColors()
 
 // Generate Momochrome Image
-let monochromeImage = image?.bc_monochrome()
+let monochromeImage = image?.monochrome()
 
 // Hex Color
-UIColor.bc_colorWithHex("#5d13e2", alpha: 1)
+UIColor.colorWithHex("#5d13e2", alpha: 1)
 
 // Gradient Color
-UIColor.bc_gradientColor(CGPointMake(0.0, 0.0), endPoint: CGPointMake(1.0, 1.0), frame:frame, colors: [UIColor.redColor(), UIColor.blueColor()])
+UIColor.gradientColor(CGPointMake(0.0, 0.0), endPoint: CGPointMake(1.0, 1.0), frame:frame, colors: [UIColor.redColor(), UIColor.blueColor()])
 
-UIColor.bc_radialGradientColor(frame, colors: [UIColor.blueColor(), UIColor.greenColor()])
+UIColor.radialGradientColor(frame, colors: [UIColor.blueColor(), UIColor.greenColor()])
 ```
 
 
