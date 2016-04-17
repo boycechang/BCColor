@@ -18,12 +18,14 @@ class PickColorsFromImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let colors = imageView.image?.bc_getColors()
-        view.backgroundColor = colors?.backgroundColor
-        titleLabel.textColor = colors?.primaryColor
-        subtitleLabel.textColor = colors?.secondaryColor
-        detailLabel.textColor = colors?.minorColor
         // Do any additional setup after loading the view.
+        
+        if let colors = imageView.image?.getColors() {
+            self.view.backgroundColor = colors.backgroundColor
+            titleLabel.textColor = colors.primaryColor
+            subtitleLabel.textColor = colors.secondaryColor
+            detailLabel.textColor = colors.minorColor
+        }
     }
 
     override func didReceiveMemoryWarning() {

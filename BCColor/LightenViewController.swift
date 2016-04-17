@@ -21,12 +21,13 @@ class LightenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view_01.backgroundColor = view_00.backgroundColor?.bc_lightenByPercentage(0.1)
-        view_02.backgroundColor = view_00.backgroundColor?.bc_lightenByPercentage(0.2)
-        
-        view_11.backgroundColor = view_10.backgroundColor?.bc_darkenByPercentage(0.1)
-        view_12.backgroundColor = view_10.backgroundColor?.bc_darkenByPercentage(0.2)
         // Do any additional setup after loading the view.
+        
+        view_01.backgroundColor = view_00.backgroundColor?.lightenByPercentage(0.1)
+        view_02.backgroundColor = view_00.backgroundColor?.lightenByPercentage(0.2)
+        
+        view_11.backgroundColor = view_10.backgroundColor?.darkenByPercentage(0.1)
+        view_12.backgroundColor = view_10.backgroundColor?.darkenByPercentage(0.2)
     }
 
     override func didReceiveMemoryWarning() {
