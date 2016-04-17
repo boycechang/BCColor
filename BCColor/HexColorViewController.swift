@@ -21,17 +21,17 @@ class HexColorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        label_1.text = "123456"
-        view_1.backgroundColor = UIColor.bc_colorWithHex("123456")
-        
-        label_2.text = "#5d13e2"
-        view_2.backgroundColor = UIColor.bc_colorWithHex("#5d13e2", alpha: 1)
-        
-        label_3.text = "#931"
-        view_3.backgroundColor = UIColor.bc_colorWithHex("#931", alpha: 1)
         
         // Do any additional setup after loading the view.
+        
+        label_1.text = "123456"
+        view_1.backgroundColor = UIColor.colorWithHex("123456")
+        
+        label_2.text = "#5d13e2"
+        view_2.backgroundColor = UIColor.colorWithHex("#5d13e2", alpha: 1)
+        
+        label_3.text = "#931"
+        view_3.backgroundColor = UIColor.colorWithHex("#931", alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {

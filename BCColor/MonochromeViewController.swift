@@ -16,9 +16,10 @@ class MonochromeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let monochromeImage = originImageView.image?.bc_monochrome()
-        imageView.image = monochromeImage
         // Do any additional setup after loading the view.
+        
+        let monochromeImage = originImageView.image?.monochrome()
+        imageView.image = monochromeImage
     }
 
     override func didReceiveMemoryWarning() {
