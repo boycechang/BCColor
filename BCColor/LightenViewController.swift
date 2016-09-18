@@ -10,13 +10,13 @@ import UIKit
 
 class LightenViewController: UIViewController {
 
-    @IBOutlet private weak var view_00: UIView!
-    @IBOutlet private weak var view_01: UIView!
-    @IBOutlet private weak var view_02: UIView!
+    @IBOutlet fileprivate weak var view_00: UIView!
+    @IBOutlet fileprivate weak var view_01: UIView!
+    @IBOutlet fileprivate weak var view_02: UIView!
     
-    @IBOutlet private weak var view_10: UIView!
-    @IBOutlet private weak var view_11: UIView!
-    @IBOutlet private weak var view_12: UIView!
+    @IBOutlet fileprivate weak var view_10: UIView!
+    @IBOutlet fileprivate weak var view_11: UIView!
+    @IBOutlet fileprivate weak var view_12: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

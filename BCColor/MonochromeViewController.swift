@@ -10,8 +10,8 @@ import UIKit
 
 class MonochromeViewController: UIViewController {
 
-    @IBOutlet private weak var originImageView: UIImageView!
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet fileprivate weak var originImageView: UIImageView!
+    @IBOutlet fileprivate weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

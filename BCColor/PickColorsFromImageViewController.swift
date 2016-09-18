@@ -10,10 +10,10 @@ import UIKit
 
 class PickColorsFromImageViewController: UIViewController {
 
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var subtitleLabel: UILabel!
-    @IBOutlet private weak var detailLabel: UILabel!
+    @IBOutlet fileprivate weak var imageView: UIImageView!
+    @IBOutlet fileprivate weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var subtitleLabel: UILabel!
+    @IBOutlet fileprivate weak var detailLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

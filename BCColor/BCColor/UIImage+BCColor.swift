@@ -40,12 +40,12 @@ extension UIImage {
      - Parameter newSize: The size to resize the image to.
      - Returns: A new `UIImage` that has been resized.
      */
-    public func resize(newSize: CGSize) -> UIImage {
+    public func resize(_ newSize: CGSize) -> UIImage {
         // start a context
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
         
         // draw the image in the context
-        self.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
         
         // get the image from the context
         let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -54,7 +54,7 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         // return the new UIImage
-        return result
+        return result!
     }
     
     /**
@@ -73,24 +73,24 @@ extension UIImage {
         let r_height: CGFloat = r_width/ratio
         
         // resize the image to the new r_width and r_height
-        let cgImage = self.resize(CGSizeMake(r_width, r_height)).CGImage
+        let cgImage = self.resize(CGSize(width: r_width, height: r_height)).cgImage
         
         // get the width and height of the new image
-        let width = CGImageGetWidth(cgImage)
-        let height = CGImageGetHeight(cgImage)
+        let width = cgImage?.width
+        let height = cgImage?.height
         
         // get the colors from the image
         let bytesPerPixel: Int = 4
-        let bytesPerRow: Int = width * bytesPerPixel
+        let bytesPerRow: Int = width! * bytesPerPixel
         let bitsPerComponent: Int = 8
-        let sortedColorComparator: NSComparator = { (main, other) -> NSComparisonResult in
+        let sortedColorComparator: Comparator = { (main, other) -> ComparisonResult in
             let m = main as! BCCountedColor, o = other as! BCCountedColor
             if m.count < o.count {
-                return NSComparisonResult.OrderedDescending
+                return ComparisonResult.orderedDescending
             } else if m.count == o.count {
-                return NSComparisonResult.OrderedSame
+                return ComparisonResult.orderedSame
             } else {
-                return NSComparisonResult.OrderedAscending
+                return ComparisonResult.orderedAscending
             }
         }
         
@@ -100,25 +100,26 @@ extension UIImage {
         
         // color detection
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let raw = malloc(bytesPerRow * height)
-        let bitmapInfo = CGImageAlphaInfo.PremultipliedFirst.rawValue
-        let ctx = CGBitmapContextCreate(raw, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo)
-        CGContextDrawImage(ctx, CGRectMake(0, 0, CGFloat(width), CGFloat(height)), cgImage)
-        let data = UnsafePointer<UInt8>(CGBitmapContextGetData(ctx))
-        let imageColors = NSCountedSet(capacity: width * height)
+        let raw = malloc(bytesPerRow * height!)
+        let bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue
+        let ctx = CGContext(data: raw, width: width!, height: height!, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
+        ctx?.draw(cgImage!, in: CGRect(x: 0, y: 0, width: CGFloat(width!), height: CGFloat(height!)))
+        
+        let data =  ctx?.data
+        let imageColors = NSCountedSet(capacity: width! * height!)
         
         // color detection
-        for x in 0..<width {
-            for y in 0..<height {
-                let pixel = ((width * y) + x) * bytesPerPixel
+        for x in 0..<width! {
+            for y in 0..<height! {
+                let pixel = ((width! * y) + x) * bytesPerPixel
                 let color = UIColor(
-                    red: round(CGFloat(data[pixel + 1]) / 255 * 120) / 120,
-                    green: round(CGFloat(data[pixel + 2]) / 255 * 120) / 120,
-                    blue: round(CGFloat(data[pixel + 3]) / 255 * 120) / 120,
+                    red: round(CGFloat(data!.load(fromByteOffset: pixel + 1, as: UInt8.self)) / 255 * 120) / 120,
+                    green: round(CGFloat(data!.load(fromByteOffset: pixel + 2, as: UInt8.self)) / 255 * 120) / 120,
+                    blue: round(CGFloat(data!.load(fromByteOffset: pixel + 3, as: UInt8.self)) / 255 * 120) / 120,
                     alpha: 1
                 )
                 
-                imageColors.addObject(color)
+                imageColors.add(color)
             }
         }
         free(raw)
@@ -127,17 +128,17 @@ extension UIImage {
         let enumerator = imageColors.objectEnumerator()
         let sortedColors = NSMutableArray(capacity: imageColors.count)
         while let kolor = enumerator.nextObject() as? UIColor {
-            let colorCount = imageColors.countForObject(kolor)
+            let colorCount = imageColors.count(for: kolor)
             if 3 < colorCount && !kolor.isBlackOrWhite {
-                sortedColors.addObject(BCCountedColor(color: kolor, count: colorCount))
+                sortedColors.add(BCCountedColor(color: kolor, count: colorCount))
             }
         }
-        sortedColors.sortUsingComparator(sortedColorComparator)
+        sortedColors.sort(comparator: sortedColorComparator)
         
         // get the background colour
         var backgroundColor: BCCountedColor
         if 0 < sortedColors.count {
-            backgroundColor = sortedColors.objectAtIndex(0) as! BCCountedColor
+            backgroundColor = sortedColors.object(at: 0) as! BCCountedColor
         } else {
             backgroundColor = BCCountedColor(color: blackColor, count: 1)
         }
@@ -200,6 +201,6 @@ extension UIImage {
         let outputImage = filter!.outputImage
         
         // return a new UIImage from the CIImage the filter has been applied to
-        return UIImage(CIImage: outputImage!)
+        return UIImage(ciImage: outputImage!)
     }
 }

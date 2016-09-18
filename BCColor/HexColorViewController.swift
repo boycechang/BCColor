@@ -10,14 +10,14 @@ import UIKit
 
 class HexColorViewController: UIViewController {
 
-    @IBOutlet private weak var label_1: UILabel!
-    @IBOutlet private weak var view_1: UIView!
+    @IBOutlet fileprivate weak var label_1: UILabel!
+    @IBOutlet fileprivate weak var view_1: UIView!
     
-    @IBOutlet private weak var label_2: UILabel!
-    @IBOutlet private weak var view_2: UIView!
+    @IBOutlet fileprivate weak var label_2: UILabel!
+    @IBOutlet fileprivate weak var view_2: UIView!
     
-    @IBOutlet private weak var label_3: UILabel!
-    @IBOutlet private weak var view_3: UIView!
+    @IBOutlet fileprivate weak var label_3: UILabel!
+    @IBOutlet fileprivate weak var view_3: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
