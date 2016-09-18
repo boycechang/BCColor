@@ -1,5 +1,6 @@
 
 Pod::Spec.new do |s|
+
   s.name     = 'BCColor'
   s.version  = '0.2'
   s.summary  = "A lightweight but powerful color kit (Swift)"
@@ -15,5 +16,7 @@ Pod::Spec.new do |s|
   s.source_files = 'BCColor/BCColor'
   s.ios.deployment_target = '8.0'
   s.requires_arc = true
+
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 
 end
