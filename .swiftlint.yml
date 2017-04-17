@@ -1,2 +1,3 @@
 disabled_rules: 
   - variable_name
+  - force_cast
