@@ -1,2 +1,6 @@
 language: objective-c
-script: xcodebuild -project BCColorDemo.xcodeproj -target BCColorDemo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+osx_image: xcode8
+script:
+  - brew install swiftlint || brew upgrade swiftlint
+  - swiftlint lint --path BCColor/BCColor/
+  - xcodebuild -project BCColorDemo.xcodeproj -target BCColorDemo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
