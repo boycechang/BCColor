@@ -1,6 +1,6 @@
 ![BCColor](https://github.com/boycechang/BCColor/blob/master/icon.png)
 
-# BCColor    [![Build Status](https://travis-ci.org/boycechang/BCColor.svg?branch=master)](https://travis-ci.org/boycechang/BCColor)
+# BCColor    [![Build Status](https://travis-ci.org/boycechang/BCColor.svg?branch=master)](https://travis-ci.org/boycechang/BCColor)  ![Verison](https://cocoapod-badges.herokuapp.com/v/BCColor/badge.png) ![Lisence](https://cocoapod-badges.herokuapp.com/l/BCColor/badge.(png|svg)) ![platform](https://cocoapod-badges.herokuapp.com/p/BCColor/badge.png)
 **A lightweight but powerful color kit (Swift)**
 
 
