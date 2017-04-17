@@ -1,6 +1,6 @@
 ![BCColor](https://github.com/boycechang/BCColor/blob/master/icon.png)
 
-#BCColor
+# BCColor
 **A lightweight but powerful color kit (Swift)**
 
 
@@ -77,7 +77,7 @@ UIColor.radialGradientColor(frame, colors: [UIColor.blueColor(), UIColor.greenCo
 
 
 
-##Misc
+## Misc
 
 Author: [Boyce Chang](http://www.boycechang.com)
 
