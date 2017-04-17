@@ -1,6 +1,6 @@
 ![BCColor](https://github.com/boycechang/BCColor/blob/master/icon.png)
 
-# BCColor
+# BCColor    [![Build Status](https://travis-ci.org/boycechang/BCColor.svg?branch=master)](https://travis-ci.org/boycechang/BCColor)
 **A lightweight but powerful color kit (Swift)**
 
 
